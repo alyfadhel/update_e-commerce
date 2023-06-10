@@ -84,43 +84,45 @@ class BuildItemsFavorites extends StatelessWidget {
                             const Spacer(),
                             Row(
                               children: [
-                                Text(
-                                  model.product!.price!.round().toString(),
-                                  style: Theme.of(context)
-                                      .textTheme
-                                      .titleSmall!
-                                      .copyWith(
-                                    color: ColorManager.bTwitter,
+                                Expanded(
+                                  flex: 6,
+                                  child: Text(
+                                    '${model.product!.price.round()}',
+                                    style:
+                                    Theme.of(context).textTheme.titleMedium!.copyWith(
+                                      fontSize: AppSize.s15,
+                                      color: ColorManager.bTwitter,
+                                    ),
                                   ),
                                 ),
-                                const SizedBox(
-                                  width: AppSize.s20,
-                                ),
-                                if (model.product!.discount! != 0)
-                                  Text(
-                                    model.product!.oldPrice!.round().toString(),
-                                    style: Theme.of(context)
-                                        .textTheme
-                                        .bodySmall!
-                                        .copyWith(
+
+                                if (model.product!.discount != 0)
+                                  Expanded(
+                                    flex: 5,
+                                    child: Text(
+                                      '${model.product!.oldPrice.round()}',
+                                      style:
+                                      Theme.of(context).textTheme.bodySmall!.copyWith(
+                                        decoration: TextDecoration.lineThrough,
                                         color: ColorManager.red,
-                                        decoration: TextDecoration.lineThrough),
+                                        fontSize: AppSize.s12,
+                                      ),
+                                    ),
                                   ),
                                 const Spacer(),
                                 IconButton(
                                   onPressed: () {
-                                    // print(products.id!);
-                                     cubit.changeFavoritesItems(productId: model.product!.id!);
+                                    cubit.changeFavoritesItems(productId: model.product!.id!);
                                   },
-                                  icon:  CircleAvatar(
-                                    radius: 15.0,
+                                  icon: CircleAvatar(
+                                    radius: 14.0,
                                     backgroundColor:
-                                    cubit.favoritesProducts[model.product!.id] == true
+                                    cubit.favoritesProducts[model.product!.id!] == true
                                         ? ColorManager.bTwitter
                                         : ColorManager.grey,
                                     child: const Icon(
                                       Icons.favorite_border,
-                                      size: 14.0,
+                                      size: 12.0,
                                       color: Colors.white,
                                     ),
                                   ),

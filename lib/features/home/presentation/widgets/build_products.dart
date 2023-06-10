@@ -23,66 +23,68 @@ class BuildProducts extends StatelessWidget {
         return Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            InkWell(
-              onTap: () {
-                debugPrint(products.id.toString());
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => ProductsDetailsScreen(
-                      id: products.id!.toInt(),
+            Expanded(
+              child: InkWell(
+                onTap: () {
+                  debugPrint(products.id.toString());
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => ProductsDetailsScreen(
+                        id: products.id!.toInt(),
+                      ),
                     ),
+                  );
+                },
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: AppSize.s10,
                   ),
-                );
-              },
-              child: Padding(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: AppSize.s10,
-                ),
-                child: Stack(
-                  alignment: AlignmentDirectional.bottomStart,
-                  children: [
-                    ClipRRect(
-                      borderRadius: const BorderRadius.all(
-                        Radius.circular(
-                          AppSize.s20,
+                  child: Stack(
+                    alignment: AlignmentDirectional.bottomStart,
+                    children: [
+                      ClipRRect(
+                        borderRadius: const BorderRadius.all(
+                          Radius.circular(
+                            AppSize.s20,
+                          ),
+                        ),
+                        child: CachedNetworkImage(
+                          width: AppSize.s150,
+                          height: AppSize.s150,
+                          imageUrl: products.image!,
+                          placeholder: (context, url) => Shimmer.fromColors(
+                            baseColor: Colors.grey.withOpacity(.5),
+                            highlightColor: Colors.grey.withOpacity(.3),
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.black,
+                                borderRadius: BorderRadius.circular(AppSize.s8),
+                              ),
+                            ),
+                          ),
+                          errorWidget: (context, url, error) =>
+                              const Icon(Icons.error),
                         ),
                       ),
-                      child: CachedNetworkImage(
-                        width: AppSize.s150,
-                        height: AppSize.s150,
-                        imageUrl: products.image!,
-                        placeholder: (context, url) => Shimmer.fromColors(
-                          baseColor: Colors.grey.withOpacity(.5),
-                          highlightColor: Colors.grey.withOpacity(.3),
-                          child: Container(
-                            decoration: BoxDecoration(
-                              color: Colors.black,
-                              borderRadius: BorderRadius.circular(AppSize.s8),
+                      if (products.discount != 0)
+                        Container(
+                          padding: const EdgeInsets.symmetric(
+                            horizontal: 10.0,
+                          ),
+                          decoration: const BoxDecoration(
+                            color: Colors.red,
+                          ),
+                          child: const Text(
+                            'DISCOUNT',
+                            style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12.0,
                             ),
                           ),
                         ),
-                        errorWidget: (context, url, error) =>
-                            const Icon(Icons.error),
-                      ),
-                    ),
-                    if (products.discount != 0)
-                      Container(
-                        padding: const EdgeInsets.symmetric(
-                          horizontal: 10.0,
-                        ),
-                        decoration: const BoxDecoration(
-                          color: Colors.red,
-                        ),
-                        child: const Text(
-                          'DISCOUNT',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 12.0,
-                          ),
-                        ),
-                      ),
-                  ],
+                    ],
+                  ),
                 ),
               ),
             ),
@@ -97,47 +99,51 @@ class BuildProducts extends StatelessWidget {
                     products.name!,
                     maxLines: 2,
                     overflow: TextOverflow.ellipsis,
-                    style: const TextStyle(
-                      height: 1.3,
+                    style: Theme.of(context).textTheme.bodyMedium!.copyWith(
+                      fontWeight: FontWeight.bold
                     ),
                   ),
                   Row(
                     children: [
-                      Text(
-                        '${products.price.round()}',
-                        style: const TextStyle(
-                          color: Colors.blue,
-                          fontWeight: FontWeight.bold,
+                      Expanded(
+                        flex: 6,
+                        child: Text(
+                          '${products.price.round()}',
+                          style:
+                              Theme.of(context).textTheme.titleMedium!.copyWith(
+                                    fontSize: AppSize.s15,
+                                    color: ColorManager.bTwitter,
+                                  ),
                         ),
                       ),
-                      const SizedBox(
-                        width: 10.0,
-                      ),
+
                       if (products.discount != 0)
-                        Text(
-                          '${products.oldPrice.round()}',
-                          style: Theme.of(context)
-                              .textTheme
-                              .bodyLarge!
-                              .copyWith(
-                                  decoration: TextDecoration.lineThrough,
-                                  color: ColorManager.red),
+                        Expanded(
+                          flex: 5,
+                          child: Text(
+                            '${products.oldPrice.round()}',
+                            style:
+                                Theme.of(context).textTheme.bodySmall!.copyWith(
+                                      decoration: TextDecoration.lineThrough,
+                                      color: ColorManager.red,
+                                      fontSize: AppSize.s12,
+                                    ),
+                          ),
                         ),
                       const Spacer(),
                       IconButton(
                         onPressed: () {
-                          print(products.id!);
                           cubit.changeFavoritesItems(productId: products.id!);
                         },
                         icon: CircleAvatar(
-                          radius: 15.0,
+                          radius: 14.0,
                           backgroundColor:
                               cubit.favoritesProducts[products.id] == true
                                   ? ColorManager.bTwitter
                                   : ColorManager.grey,
                           child: const Icon(
                             Icons.favorite_border,
-                            size: 14.0,
+                            size: 12.0,
                             color: Colors.white,
                           ),
                         ),

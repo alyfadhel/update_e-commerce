@@ -26,13 +26,11 @@ ThemeData getApplicationLightTheme() {
         // color: ColorManager.black,
       ),
     ),
-
     sliderTheme: const SliderThemeData(
       valueIndicatorTextStyle: TextStyle(
         color: ColorManager.sWhite,
       ),
     ),
-
     primarySwatch: Colors.blue,
     bottomSheetTheme: const BottomSheetThemeData(
       backgroundColor: ColorManager.sWhite,

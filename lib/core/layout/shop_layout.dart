@@ -6,6 +6,7 @@ import 'package:review_shop_app/core/network/end-points.dart';
 import 'package:review_shop_app/core/resources/color_manager.dart';
 import 'package:review_shop_app/core/resources/values_manager.dart';
 import 'package:review_shop_app/core/service/service_locator.dart';
+import 'package:review_shop_app/features/cart/presentation/pages/cart_screen.dart';
 import 'package:review_shop_app/features/search/presentation/pages/search.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -30,31 +31,36 @@ class ShopLayout extends StatelessWidget {
                 iconSize: 40.0,
                 padding: EdgeInsets.zero,
                 onPressed: () {
+                  Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                      builder: (context) => const CartScreen(),
+                    ),
+                  );
                 },
                 icon: Stack(
                   fit: StackFit.expand,
                   children: [
-                    Icon(
-                        Icons.shopping_cart_outlined,
-                        color: ColorManager.grey.withOpacity(.6)
-                    ),
-                    if( cubit.getCartItem != null)
+                    Icon(Icons.shopping_cart_outlined,
+                        color: ColorManager.grey.withOpacity(.6)),
+                    if (cubit.getCartItem != null)
                       Positioned(
                         top: AppSize.s5,
                         left: AppSize.s2,
                         child: CircleAvatar(
                           radius: AppSize.s9,
                           backgroundColor: ColorManager.lightRed,
-                          child: Text(cubit.getCartItem!.data.cartItems.length > 9 ?'+9'
-                              :'${ cubit.getCartItem!.data.cartItems.length}' ,
+                          child: Text(
+                            cubit.getCartItem!.data.cartItems.length > 9
+                                ? '+9'
+                                : '${cubit.getCartItem!.data.cartItems.length}',
                             style: const TextStyle(
-                              color: ColorManager.sWhite                                                                                    ,
+                              color: ColorManager.sWhite,
                               fontSize: AppSize.s11,
                             ),
                           ),
                         ),
                       ),
-
                   ],
                 ),
               ),

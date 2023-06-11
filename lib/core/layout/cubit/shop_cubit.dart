@@ -283,6 +283,67 @@ class ShopCubit extends Cubit<ShopState> {
     );
   }
 
+  void getFavorites() async {
+    emit(ShopFavoritesLoadingState());
+
+    final result = await getFavoritesUseCase(const NoParameters());
+
+    result.fold(
+          (l) {
+        emit(ShopFavoritesErrorState(l.message));
+      },
+          (r) {
+        favorites = r;
+        emit(ShopFavoritesSuccessState(r));
+        debugPrint('The ProductFavorites Is :$favorites');
+      },
+    );
+  }
+
+  Map<int,bool>inCart = {};
+  void changeCart({required int id}) async {
+    inCart[id] = !inCart[id]!;
+    emit(ShopCartLoadingState());
+    final result = await getCartUseCase(
+      CartParameter(
+        id: id,
+      ),
+    );
+    result.fold(
+          (l) {
+        inCart[id] = !inCart[id]!;
+        emit(ShopCartErrorState(l.message));
+      },
+          (r) {
+        cart = r;
+        if (!cart!.status!) {
+          inCart[id] = !inCart[id]!;
+        } else {
+          getCart();
+        }
+        emit(ShopCartSuccessState(r));
+      },
+    );
+  }
+
+  void getCart() async {
+    emit(ShopGetCartLoadingState());
+
+    final result = await getCartItemsUseCase(
+      const NoParameters(),
+    );
+
+    result.fold(
+          (l) {
+        emit(ShopGetCartErrorState(l.message));
+      },
+          (r) {
+        getCartItem = r;
+        emit(ShopGetCartSuccessState(r));
+      },
+    );
+  }
+
   void getCategories() async {
     final result = await getCategoriesUseCase(const NoParameters());
 
@@ -337,22 +398,7 @@ class ShopCubit extends Cubit<ShopState> {
     );
   }
 
-  void getFavorites() async {
-    emit(ShopFavoritesLoadingState());
 
-    final result = await getFavoritesUseCase(const NoParameters());
-
-    result.fold(
-      (l) {
-        emit(ShopFavoritesErrorState(l.message));
-      },
-      (r) {
-        favorites = r;
-        emit(ShopFavoritesSuccessState(r));
-        debugPrint('The ProductFavorites Is :$favorites');
-      },
-    );
-  }
 
   void getSearch({required String text}) async {
     emit(ShopSearchLoadingState());
@@ -373,47 +419,5 @@ class ShopCubit extends Cubit<ShopState> {
     );
   }
 
-  Map<int,bool>inCart = {};
-  void changeCart({required int id}) async {
-    inCart[id] = !inCart[id]!;
-    emit(ShopCartLoadingState());
-    final result = await getCartUseCase(
-      CartParameter(
-        id: id,
-      ),
-    );
-    result.fold(
-      (l) {
-        inCart[id] = !inCart[id]!;
-        emit(ShopCartErrorState(l.message));
-      },
-      (r) {
-        cart = r;
-        if (!cart!.status!) {
-          inCart[id] = !inCart[id]!;
-        } else {
-          getCart();
-        }
-        emit(ShopCartSuccessState(r));
-      },
-    );
-  }
 
-  void getCart() async {
-    emit(ShopGetCartLoadingState());
-
-    final result = await getCartItemsUseCase(
-      const NoParameters(),
-    );
-
-    result.fold(
-      (l) {
-        emit(ShopGetCartErrorState(l.message));
-      },
-      (r) {
-        getCartItem = r;
-        emit(ShopGetCartSuccessState(r));
-      },
-    );
-  }
 }

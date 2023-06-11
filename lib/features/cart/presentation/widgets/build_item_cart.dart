@@ -5,12 +5,12 @@ import 'package:review_shop_app/core/layout/cubit/shop_cubit.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_state.dart';
 import 'package:review_shop_app/core/resources/color_manager.dart';
 import 'package:review_shop_app/core/resources/values_manager.dart';
-import 'package:review_shop_app/features/cart/domain/entities/cart.dart';
+import 'package:review_shop_app/features/cart/domain/entities/get_cart.dart';
 import 'package:shimmer/shimmer.dart';
 
 
 class BuildItemsCart extends StatelessWidget {
-  final Cart model;
+  final CartItems model;
 
   const BuildItemsCart({super.key, required this.model});
 
@@ -50,7 +50,7 @@ class BuildItemsCart extends StatelessWidget {
                         width: AppSize.s120,
                         height: AppSize.s150,
                         fit: BoxFit.cover,
-                        imageUrl: model.data!.product!.image!,
+                        imageUrl: model.product.image!,
                         placeholder: (context, url) => Shimmer.fromColors(
                           baseColor: Colors.grey.withOpacity(.3),
                           highlightColor: Colors.grey.withOpacity(.5),
@@ -77,7 +77,7 @@ class BuildItemsCart extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              model.data!.product!.name!,
+                              model.product.name,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                               style: Theme.of(context).textTheme.titleSmall,
@@ -88,7 +88,7 @@ class BuildItemsCart extends StatelessWidget {
                                 Expanded(
                                   flex: 6,
                                   child: Text(
-                                    '${model.data!.product!.price!.round()}',
+                                    '${model.product.price!.round()}',
                                     style:
                                     Theme.of(context).textTheme.titleMedium!.copyWith(
                                       fontSize: AppSize.s15,
@@ -97,11 +97,11 @@ class BuildItemsCart extends StatelessWidget {
                                   ),
                                 ),
 
-                                if (model.data!.product!.discount != 0)
+                                if (model.product.discount != 0)
                                   Expanded(
                                     flex: 5,
                                     child: Text(
-                                      '${model.data!.product!.oldPrice.round()}',
+                                      '${model.product.oldPrice.round()}',
                                       style:
                                       Theme.of(context).textTheme.bodySmall!.copyWith(
                                         decoration: TextDecoration.lineThrough,
@@ -113,12 +113,12 @@ class BuildItemsCart extends StatelessWidget {
                                 const Spacer(),
                                 IconButton(
                                   onPressed: () {
-                                    cubit.changeFavoritesItems(productId: model.data!.product!.id!);
+                                    cubit.changeFavoritesItems(productId: model.product.id!);
                                   },
                                   icon: CircleAvatar(
                                     radius: 14.0,
                                     backgroundColor:
-                                    cubit.favoritesProducts[model.data!.product!.id!] == true
+                                    cubit.favoritesProducts[model.product.id!] == true
                                         ? ColorManager.bTwitter
                                         : ColorManager.grey,
                                     child: const Icon(
@@ -128,23 +128,23 @@ class BuildItemsCart extends StatelessWidget {
                                     ),
                                   ),
                                 ),
-                                // IconButton(
-                                //   onPressed: () {
-                                //     cubit.changeCart(id: model.data!.product!.id!);
-                                //   },
-                                //   icon: CircleAvatar(
-                                //     radius: AppSize.s18,
-                                //     backgroundColor:
-                                //     cubit.inCart[model.data!.product!.id!]!
-                                //         ? ColorManager.mGreen
-                                //         : ColorManager.grey.withOpacity(.8),
-                                //     child: const Icon(
-                                //       Icons.shopping_cart_outlined,
-                                //       color: Colors.white,
-                                //       size: AppSize.s18,
-                                //     ),
-                                //   ),
-                                // ),
+                                IconButton(
+                                  onPressed: () {
+                                    cubit.changeCart(id: model.product.id!);
+                                  },
+                                  icon: CircleAvatar(
+                                    radius: AppSize.s18,
+                                    backgroundColor:
+                                    cubit.inCart[model.product.id!]!
+                                        ? ColorManager.mGreen
+                                        : ColorManager.grey.withOpacity(.8),
+                                    child: const Icon(
+                                      Icons.shopping_cart_outlined,
+                                      color: Colors.white,
+                                      size: AppSize.s18,
+                                    ),
+                                  ),
+                                ),
                               ],
                             ),
                           ],

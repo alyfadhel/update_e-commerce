@@ -33,12 +33,16 @@ class CartScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(),
           body: ConditionalBuilder(
-            condition: cubit.cart != null,
-            builder: (context) => BuildItemsCart(
-              model: cubit.cart!,
+            condition: cubit.getCartItem != null,
+            builder: (context) => ListView.builder(
+              itemBuilder: (context, index) => BuildItemsCart(
+                model: cubit.getCartItem!.data.cartItems[index],
+              ),
+              itemCount: cubit.getCartItem!.data.cartItems.length,
             ),
-            fallback: (context) =>
-            const Center(child: CircularProgressIndicator()),
+            fallback: (context) => const Center(
+              child: CircularProgressIndicator(),
+            ),
           ),
         );
       },

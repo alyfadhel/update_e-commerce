@@ -5,7 +5,8 @@ import 'package:review_shop_app/core/layout/cubit/shop_cubit.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_state.dart';
 import 'package:review_shop_app/core/widgets/toast_state.dart';
 import 'package:review_shop_app/features/cart/presentation/widgets/build_item_cart.dart';
-import 'package:review_shop_app/features/favorites/presentation/widgets/build_item_favorites.dart';
+
+
 
 class CartScreen extends StatelessWidget {
   const CartScreen({Key? key}) : super(key: key);
@@ -30,22 +31,25 @@ class CartScreen extends StatelessWidget {
       },
       builder: (context, state) {
         var cubit = ShopCubit.get(context);
-        return Scaffold(
-          appBar: AppBar(),
-          body: ConditionalBuilder(
-            condition: cubit.getCartItem != null,
-            builder: (context) => ListView.builder(
-              itemBuilder: (context, index) => BuildItemsCart(
-                model: cubit.getCartItem!.data.cartItems[index],
+          return Scaffold(
+            appBar: AppBar(),
+            body: ConditionalBuilder(
+              condition: cubit.getCartItem != null,
+              builder: (context) =>
+                  ListView.builder(
+                    itemBuilder: (context, index) =>
+                        BuildItemsCart(
+                          model: cubit.getCartItem!.data.cartItems[index],
+                        ),
+                    itemCount: cubit.getCartItem!.data.cartItems.length,
+                  ),
+              fallback: (context) =>
+              const Center(
+                child: CircularProgressIndicator(),
               ),
-              itemCount: cubit.getCartItem!.data.cartItems.length,
             ),
-            fallback: (context) => const Center(
-              child: CircularProgressIndicator(),
-            ),
-          ),
-        );
-      },
+          );
+        },
     );
   }
 }

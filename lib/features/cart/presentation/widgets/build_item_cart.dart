@@ -113,23 +113,6 @@ class BuildItemsCart extends StatelessWidget {
                                 const Spacer(),
                                 IconButton(
                                   onPressed: () {
-                                    cubit.changeFavoritesItems(productId: model.product.id!);
-                                  },
-                                  icon: CircleAvatar(
-                                    radius: 14.0,
-                                    backgroundColor:
-                                    cubit.favoritesProducts[model.product.id!] == true
-                                        ? ColorManager.bTwitter
-                                        : ColorManager.grey,
-                                    child: const Icon(
-                                      Icons.favorite_border,
-                                      size: 12.0,
-                                      color: Colors.white,
-                                    ),
-                                  ),
-                                ),
-                                IconButton(
-                                  onPressed: () {
                                     cubit.changeCart(id: model.product.id!);
                                   },
                                   icon: CircleAvatar(

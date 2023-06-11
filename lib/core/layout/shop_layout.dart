@@ -4,6 +4,7 @@ import 'package:review_shop_app/core/layout/cubit/shop_cubit.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_state.dart';
 import 'package:review_shop_app/core/network/end-points.dart';
 import 'package:review_shop_app/core/resources/color_manager.dart';
+import 'package:review_shop_app/core/resources/values_manager.dart';
 import 'package:review_shop_app/core/service/service_locator.dart';
 import 'package:review_shop_app/features/search/presentation/pages/search.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -39,16 +40,16 @@ class ShopLayout extends StatelessWidget {
                     ),
                     if( cubit.getCartItem != null)
                       Positioned(
-                        top: 5,
-                        left: 2,
+                        top: AppSize.s5,
+                        left: AppSize.s2,
                         child: CircleAvatar(
-                          radius: 9.0,
+                          radius: AppSize.s9,
                           backgroundColor: ColorManager.lightRed,
                           child: Text(cubit.getCartItem!.data.cartItems.length > 9 ?'+9'
                               :'${ cubit.getCartItem!.data.cartItems.length}' ,
                             style: const TextStyle(
-                              color: Colors.white                                                                                    ,
-                              fontSize: 11.0,
+                              color: ColorManager.sWhite                                                                                    ,
+                              fontSize: AppSize.s11,
                             ),
                           ),
                         ),

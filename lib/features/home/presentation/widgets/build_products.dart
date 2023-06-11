@@ -143,17 +143,17 @@ class BuildProducts extends StatelessWidget {
                           ShopCubit.get(context).changeCart(id: products.id!);
                         },
                         icon: CircleAvatar(
-                          radius: 14.0,
+                          radius: AppSize.s18,
                           backgroundColor:
                           ShopCubit.get(context).inCart[products.id]!
-                              ? Colors.green
-                              : Colors.grey[400],
+                              ? ColorManager.mGreen
+                              : ColorManager.grey.withOpacity(.8),
                           child: const Icon(
                             Icons.shopping_cart_outlined,
                             color: Colors.white,
+                            size: AppSize.s18,
                           ),
                         ),
-                        iconSize: 12.0,
                       ),
                       IconButton(
                         onPressed: () {

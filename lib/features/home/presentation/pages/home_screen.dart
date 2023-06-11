@@ -13,7 +13,8 @@ class HomeScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<ShopCubit, ShopState>(
       listener: (context, state) {
-        if (state is ShopChangeFavoritesSuccessState) {
+        if (state is ShopChangeFavoritesSuccessState)
+        {
           if (!state.changeFavorites.status!) {
             showToast(
               text: state.changeFavorites.message!,
@@ -23,6 +24,20 @@ class HomeScreen extends StatelessWidget {
             showToast(
               text: state.changeFavorites.message!,
               state: ToastState.success,
+            );
+          }
+        }
+
+        if (state is ShopCartSuccessState) {
+          if (state.cart.status!) {
+            showToast(
+              text: state.cart.message!,
+              state: ToastState.success,
+            );
+          } else {
+            showToast(
+              text: state.cart.message!,
+              state: ToastState.error,
             );
           }
         }

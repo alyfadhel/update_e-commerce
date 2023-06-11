@@ -5,6 +5,11 @@ import 'package:review_shop_app/core/layout/cubit/shop_state.dart';
 import 'package:review_shop_app/core/network/end-points.dart';
 import 'package:review_shop_app/core/service/service_locator.dart';
 import 'package:review_shop_app/core/usecase/base_usecase.dart';
+import 'package:review_shop_app/features/cart/domain/entities/cart.dart';
+import 'package:review_shop_app/features/cart/domain/entities/get_cart.dart';
+import 'package:review_shop_app/features/cart/domain/repository/base_cart_repository.dart';
+import 'package:review_shop_app/features/cart/domain/usecase/get_cart_items_use_case.dart';
+import 'package:review_shop_app/features/cart/domain/usecase/get_cart_use_case.dart';
 import 'package:review_shop_app/features/categories/presentation/pages/categories_screen.dart';
 import 'package:review_shop_app/features/categories_details/domain/entities/categories_details.dart';
 import 'package:review_shop_app/features/categories_details/domain/repository/base_categories_details_repository.dart';
@@ -49,6 +54,8 @@ class ShopCubit extends Cubit<ShopState> {
     this.getFavoritesUseCase,
     this.getChangeFavoritesUseCase,
     this.getSearchUseCase,
+    this.getCartUseCase,
+    this.getCartItemsUseCase,
   ) : super(ShopInitialState());
 
   final GetProfileUseCase getProfileUseCase;
@@ -61,6 +68,8 @@ class ShopCubit extends Cubit<ShopState> {
   final GetChangeFavoritesUseCase getChangeFavoritesUseCase;
   final GetFavoritesUseCase getFavoritesUseCase;
   final GetSearchUseCase getSearchUseCase;
+  final GetCartUseCase getCartUseCase;
+  final GetCartItemsUseCase getCartItemsUseCase;
   Profile? profile;
   UpdateProfile? updateProfile;
   LogOut? logOut;
@@ -71,6 +80,8 @@ class ShopCubit extends Cubit<ShopState> {
   ChangeFavorites? changeFavorites;
   Favorites? favorites;
   Search? search;
+  Cart? cart;
+  GetCart? getCartItem;
   var nameController = TextEditingController();
   var emailController = TextEditingController();
   var phoneController = TextEditingController();
@@ -235,6 +246,11 @@ class ShopCubit extends Cubit<ShopState> {
         home!.data!.products!.forEach((element) {
           favoritesProducts.addAll(({element.id!: element.inFavorites!}));
         });
+        home!.data!.products!.forEach((element) {
+          inCart.addAll({
+            element.id!: element.inCart!,
+          });
+        });
         debugPrint('The Favorites Is : $favoritesProducts');
         emit(ShopHomeSuccessState(r));
       },
@@ -353,6 +369,50 @@ class ShopCubit extends Cubit<ShopState> {
       (r) {
         search = r;
         emit(ShopSearchSuccessState(r));
+      },
+    );
+  }
+
+  Map<int,bool>inCart = {};
+  void changeCart({required int id}) async {
+    inCart[id] = !inCart[id]!;
+    emit(ShopCartLoadingState());
+    final result = await getCartUseCase(
+      CartParameter(
+        id: id,
+      ),
+    );
+    result.fold(
+      (l) {
+        inCart[id] = !inCart[id]!;
+        emit(ShopCartErrorState(l.message));
+      },
+      (r) {
+        cart = r;
+        if (!cart!.status!) {
+          inCart[id] = !inCart[id]!;
+        } else {
+          getCart();
+        }
+        emit(ShopCartSuccessState(r));
+      },
+    );
+  }
+
+  void getCart() async {
+    emit(ShopGetCartLoadingState());
+
+    final result = await getCartItemsUseCase(
+      const NoParameters(),
+    );
+
+    result.fold(
+      (l) {
+        emit(ShopGetCartErrorState(l.message));
+      },
+      (r) {
+        getCartItem = r;
+        emit(ShopGetCartSuccessState(r));
       },
     );
   }

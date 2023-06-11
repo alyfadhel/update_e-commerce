@@ -1,5 +1,7 @@
 
 
+import 'package:review_shop_app/features/cart/domain/entities/cart.dart';
+import 'package:review_shop_app/features/cart/domain/entities/get_cart.dart';
 import 'package:review_shop_app/features/categories_details/domain/entities/categories_details.dart';
 import 'package:review_shop_app/features/change_favorites/domain/entities/change_favorites.dart';
 import 'package:review_shop_app/features/favorites/domain/entities/favorites.dart';
@@ -143,6 +145,31 @@ class ShopSearchErrorState extends ShopState{
   final String error;
 
   ShopSearchErrorState(this.error);
+}
+
+class ShopCartLoadingState extends ShopState{}
+class ShopCartSuccessState extends ShopState{
+  final Cart cart;
+
+  ShopCartSuccessState(this.cart);
+}
+class ShopCartErrorState extends ShopState{
+  final String error;
+
+  ShopCartErrorState(this.error);
+}
+
+
+class ShopGetCartLoadingState extends ShopState{}
+class ShopGetCartSuccessState extends ShopState{
+  final GetCart getCartItem;
+
+  ShopGetCartSuccessState(this.getCartItem);
+}
+class ShopGetCartErrorState extends ShopState{
+  final String error;
+
+  ShopGetCartErrorState(this.error);
 }
 
 

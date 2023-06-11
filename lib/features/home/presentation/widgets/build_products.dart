@@ -103,10 +103,12 @@ class BuildProducts extends StatelessWidget {
                       fontWeight: FontWeight.bold
                     ),
                   ),
+                  const SizedBox(
+                    height: AppSize.s10,
+                  ),
                   Row(
                     children: [
                       Expanded(
-                        flex: 6,
                         child: Text(
                           '${products.price.round()}',
                           style:
@@ -116,10 +118,8 @@ class BuildProducts extends StatelessWidget {
                                   ),
                         ),
                       ),
-
                       if (products.discount != 0)
                         Expanded(
-                          flex: 5,
                           child: Text(
                             '${products.oldPrice.round()}',
                             style:
@@ -130,7 +130,31 @@ class BuildProducts extends StatelessWidget {
                                     ),
                           ),
                         ),
-                      const Spacer(),
+                    ],
+                  ),
+                  const SizedBox(
+                    height: AppSize.s10,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      IconButton(
+                        onPressed: () {
+                          ShopCubit.get(context).changeCart(id: products.id!);
+                        },
+                        icon: CircleAvatar(
+                          radius: 14.0,
+                          backgroundColor:
+                          ShopCubit.get(context).inCart[products.id]!
+                              ? Colors.green
+                              : Colors.grey[400],
+                          child: const Icon(
+                            Icons.shopping_cart_outlined,
+                            color: Colors.white,
+                          ),
+                        ),
+                        iconSize: 12.0,
+                      ),
                       IconButton(
                         onPressed: () {
                           cubit.changeFavoritesItems(productId: products.id!);
@@ -138,9 +162,9 @@ class BuildProducts extends StatelessWidget {
                         icon: CircleAvatar(
                           radius: 14.0,
                           backgroundColor:
-                              cubit.favoritesProducts[products.id] == true
-                                  ? ColorManager.bTwitter
-                                  : ColorManager.grey,
+                          cubit.favoritesProducts[products.id] == true
+                              ? ColorManager.bTwitter
+                              : ColorManager.grey,
                           child: const Icon(
                             Icons.favorite_border,
                             size: 12.0,

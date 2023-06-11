@@ -1,6 +1,11 @@
 import 'package:get_it/get_it.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_cubit.dart';
 import 'package:review_shop_app/core/network/dio_helper.dart';
+import 'package:review_shop_app/features/cart/data/datasource/base_cart_remote_data_source.dart';
+import 'package:review_shop_app/features/cart/data/repository/cart_repository.dart';
+import 'package:review_shop_app/features/cart/domain/repository/base_cart_repository.dart';
+import 'package:review_shop_app/features/cart/domain/usecase/get_cart_items_use_case.dart';
+import 'package:review_shop_app/features/cart/domain/usecase/get_cart_use_case.dart';
 import 'package:review_shop_app/features/categories_details/data/datasource/base_categories_details_remote_data_source.dart';
 import 'package:review_shop_app/features/categories_details/data/repository/categories_details_repository.dart';
 import 'package:review_shop_app/features/categories_details/domain/repository/base_categories_details_repository.dart';
@@ -66,8 +71,20 @@ class ServiceLocator {
           sl(),
           sl(),
           sl(),
+          sl(),
+          sl(),
         ));
     ///////////////////////////////////////////////////////
+    sl.registerLazySingleton(() => GetCartItemsUseCase(sl()));
+
+    sl.registerLazySingleton(() => GetCartUseCase(sl()));
+
+    sl.registerLazySingleton<BaseCartRepository>(
+            () => CartRepository(sl()));
+
+    sl.registerLazySingleton<BaseCartRemoteDataSource>(
+            () => CartRemoteDataSource(sl()));
+    //////////////////////////////////////////////////////
     sl.registerLazySingleton(() => GetSearchUseCase(sl()));
 
     sl.registerLazySingleton<BaseSearchRepository>(

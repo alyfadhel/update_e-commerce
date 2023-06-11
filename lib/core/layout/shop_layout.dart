@@ -26,11 +26,35 @@ class ShopLayout extends StatelessWidget {
             ),
             actions: [
               IconButton(
+                iconSize: 40.0,
+                padding: EdgeInsets.zero,
                 onPressed: () {
-                  cubit.changeThemeMode();
                 },
-                icon: const Icon(
-                  Icons.brightness_4_outlined,
+                icon: Stack(
+                  fit: StackFit.expand,
+                  children: [
+                    Icon(
+                        Icons.shopping_cart_outlined,
+                        color: ColorManager.grey.withOpacity(.6)
+                    ),
+                    if( cubit.getCartItem != null)
+                      Positioned(
+                        top: 5,
+                        left: 2,
+                        child: CircleAvatar(
+                          radius: 9.0,
+                          backgroundColor: ColorManager.lightRed,
+                          child: Text(cubit.getCartItem!.data.cartItems.length > 9 ?'+9'
+                              :'${ cubit.getCartItem!.data.cartItems.length}' ,
+                            style: const TextStyle(
+                              color: Colors.white                                                                                    ,
+                              fontSize: 11.0,
+                            ),
+                          ),
+                        ),
+                      ),
+
+                  ],
                 ),
               ),
               IconButton(
@@ -64,6 +88,14 @@ class ShopLayout extends StatelessWidget {
                       ),
                     ),
                   ),
+                ),
+              ),
+              IconButton(
+                onPressed: () {
+                  cubit.changeThemeMode();
+                },
+                icon: const Icon(
+                  Icons.brightness_4_outlined,
                 ),
               ),
               IconButton(

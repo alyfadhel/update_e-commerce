@@ -4,8 +4,8 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_cubit.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_state.dart';
 import 'package:review_shop_app/core/service/service_locator.dart';
+import 'package:review_shop_app/core/widgets/toast_state.dart';
 import 'package:review_shop_app/features/products_details/presentation/widgets/build_products_details.dart';
-
 
 class ProductsDetailsScreen extends StatelessWidget {
   final int id;
@@ -23,7 +23,21 @@ class ProductsDetailsScreen extends StatelessWidget {
           id: id,
         ),
       child: BlocConsumer<ShopCubit, ShopState>(
-        listener: (context, state) {},
+        listener: (context, state) {
+          if (state is ShopCartSuccessState) {
+            if (state.cart.status!) {
+              showToast(
+                text: state.cart.message!,
+                state: ToastState.success,
+              );
+            } else {
+              showToast(
+                text: state.cart.message!,
+                state: ToastState.error,
+              );
+            }
+          }
+        },
         builder: (context, state) {
           var cubit = ShopCubit.get(context);
           return Scaffold(

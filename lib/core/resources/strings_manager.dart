@@ -13,6 +13,7 @@ class AppStrings {
   static const String logOut = 'LogOut ';
   static const String categories = 'Categories ';
   static const String newProducts = 'New Products ';
+  static const String addCart = 'Add to Cart';
   static const String loginTitle = 'Login to browse hot offers';
   static const String enterURName = 'Please enter your name';
   static const String enterUREmail = 'Please enter your email address';

@@ -21,6 +21,8 @@ class AppStrings {
   static const String enterURPassword = 'Please enter your password';
   static const String haveNoAccount = 'Have\'t an account ?';
   static const String register = 'Register';
+  static const String emptyCart = 'Cart Is Empty';
+  static const String favorites = 'Favorites Is Empty';
   static const String registerTitle = 'Register to browse hot offers';
 
 

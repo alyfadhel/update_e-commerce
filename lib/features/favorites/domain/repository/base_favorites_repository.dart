@@ -4,5 +4,5 @@ import 'package:review_shop_app/features/favorites/domain/entities/favorites.dar
 
 abstract class BaseFavoritesRepository
 {
-  Future<Either<Failure,Favorites>>getFavorites();
+  Future<Either<Failure,List<FavoritesData>>>getFavorites();
 }

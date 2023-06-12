@@ -9,7 +9,7 @@ import 'package:review_shop_app/features/favorites/domain/entities/favorites.dar
 import 'package:shimmer/shimmer.dart';
 
 class BuildItemsFavorites extends StatelessWidget {
-  final FavoritesDetailsData model;
+  final FavoritesData model;
 
   const BuildItemsFavorites({super.key, required this.model});
 
@@ -49,7 +49,7 @@ class BuildItemsFavorites extends StatelessWidget {
                         width: AppSize.s120,
                         height: AppSize.s150,
                         fit: BoxFit.cover,
-                        imageUrl: model.product!.image!,
+                        imageUrl: model.product.image,
                         placeholder: (context, url) => Shimmer.fromColors(
                           baseColor: Colors.grey.withOpacity(.3),
                           highlightColor: Colors.grey.withOpacity(.5),
@@ -76,7 +76,7 @@ class BuildItemsFavorites extends StatelessWidget {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Text(
-                              model.product!.name!,
+                              model.product.name,
                               overflow: TextOverflow.ellipsis,
                               maxLines: 2,
                               style: Theme.of(context).textTheme.titleSmall,
@@ -87,7 +87,7 @@ class BuildItemsFavorites extends StatelessWidget {
                                 Expanded(
                                   flex: 6,
                                   child: Text(
-                                    '${model.product!.price.round()}',
+                                    '${model.product.price.round()}',
                                     style:
                                     Theme.of(context).textTheme.titleMedium!.copyWith(
                                       fontSize: AppSize.s15,
@@ -96,11 +96,11 @@ class BuildItemsFavorites extends StatelessWidget {
                                   ),
                                 ),
 
-                                if (model.product!.discount != 0)
+                                if (model.product.discount != 0)
                                   Expanded(
                                     flex: 5,
                                     child: Text(
-                                      '${model.product!.oldPrice.round()}',
+                                      '${model.product.oldPrice.round()}',
                                       style:
                                       Theme.of(context).textTheme.bodySmall!.copyWith(
                                         decoration: TextDecoration.lineThrough,
@@ -112,12 +112,12 @@ class BuildItemsFavorites extends StatelessWidget {
                                 const Spacer(),
                                 IconButton(
                                   onPressed: () {
-                                    cubit.changeFavoritesItems(productId: model.product!.id!);
+                                    cubit.changeFavoritesItems(productId: model.product.id);
                                   },
                                   icon: CircleAvatar(
                                     radius: 14.0,
                                     backgroundColor:
-                                    cubit.favoritesProducts[model.product!.id!] == true
+                                    cubit.favoritesProducts[model.product.id] == true
                                         ? ColorManager.bTwitter
                                         : ColorManager.grey,
                                     child: const Icon(

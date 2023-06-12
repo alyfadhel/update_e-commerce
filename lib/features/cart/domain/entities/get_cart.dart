@@ -55,11 +55,11 @@ class CartItems extends Equatable {
 }
 
 class CartItemsProduct extends Equatable {
-  final int? id;
+  final int id;
   final dynamic price;
   final dynamic oldPrice;
   final dynamic discount;
-  final String? image;
+  final String image;
   final String name;
   final String description;
   final List<String> images;

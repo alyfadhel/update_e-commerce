@@ -9,59 +9,41 @@ class FavoritesModel extends Favorites {
   factory FavoritesModel.fromJson(Map<String, dynamic> json) {
     return FavoritesModel(
       status: json['status'],
-      data: json['data'] != null ? FavoritesDataModel.fromJson(json['data']) : null,
+      data: DataModel.fromJson(json['data']),
+    );
+  }
+}
+
+class DataModel extends Data {
+  const DataModel({
+    required super.currentPage,
+    required super.data,
+  });
+
+  factory DataModel.fromJson(Map<String, dynamic> json) {
+    List<FavoritesDataModel> data = [];
+    if (json['data'] != null) {
+      json['data'].forEach((element) {
+        data.add(FavoritesDataModel.fromJson(element));
+      });
+    }
+    return DataModel(
+      currentPage: json['current_page'],
+      data: data,
     );
   }
 }
 
 class FavoritesDataModel extends FavoritesData {
   const FavoritesDataModel({
-    required super.currentPage,
-    required super.data,
-    required super.firstPageUrl,
-    required super.from,
-    required super.lastPage,
-    required super.lastPageUrl,
-    required super.path,
-    required super.perPage,
-    required super.to,
-    required super.total,
-  });
-
-  factory FavoritesDataModel.fromJson(Map<String, dynamic> json) {
-    List<FavoritesDetailsDataModel> data = [];
-    if (json['data'] != null) {
-      json['data'].forEach((element) {
-        data.add(FavoritesDetailsDataModel.fromJson(element));
-      });
-    }
-    return FavoritesDataModel(
-      currentPage: json['current_page'],
-      data: data,
-      firstPageUrl: json['first_page_url'],
-      from: json['from'],
-      lastPage: json['last_page'],
-      lastPageUrl: json['last_page_url'],
-      path: json['path'],
-      perPage: json['per_page'],
-      to: json['to'],
-      total: json['total'],
-    );
-  }
-}
-
-class FavoritesDetailsDataModel extends FavoritesDetailsData {
-  const FavoritesDetailsDataModel({
     required super.id,
     required super.product,
   });
 
-  factory FavoritesDetailsDataModel.fromJson(Map<String, dynamic> json) {
-    return FavoritesDetailsDataModel(
+  factory FavoritesDataModel.fromJson(Map<String, dynamic> json) {
+    return FavoritesDataModel(
       id: json['id'],
-      product: json['product'] != null
-          ? ProductModel.fromJson(json['product'])
-          : null,
+      product: ProductModel.fromJson(json['product']),
     );
   }
 }

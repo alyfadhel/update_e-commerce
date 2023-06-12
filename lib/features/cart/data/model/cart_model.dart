@@ -11,7 +11,7 @@ class CartModel extends Cart {
     return CartModel(
       status: json['status'],
       message: json['message'],
-      data: json['data'] != null ? CartDataModel.fromJson(json['data']) : null,
+      data: CartDataModel.fromJson(json['data']) ,
     );
   }
 }
@@ -27,9 +27,8 @@ class CartDataModel extends CartData {
     return CartDataModel(
       id: json['id'],
       quantity: json['quantity'],
-      product: json['product'] != null
-          ? CartProductModel.fromJson(json['product'])
-          : null,
+      product: CartProductModel.fromJson(json['product'])
+          ,
     );
   }
 }

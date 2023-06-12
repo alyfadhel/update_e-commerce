@@ -50,7 +50,7 @@ class BuildItemsCart extends StatelessWidget {
                         width: AppSize.s120,
                         height: AppSize.s150,
                         fit: BoxFit.cover,
-                        imageUrl: model.product.image!,
+                        imageUrl: model.product.image,
                         placeholder: (context, url) => Shimmer.fromColors(
                           baseColor: Colors.grey.withOpacity(.3),
                           highlightColor: Colors.grey.withOpacity(.5),
@@ -113,12 +113,12 @@ class BuildItemsCart extends StatelessWidget {
                                 const Spacer(),
                                 IconButton(
                                   onPressed: () {
-                                    cubit.changeCart(id: model.product.id!);
+                                    cubit.changeCart(id: model.product.id);
                                   },
                                   icon: CircleAvatar(
                                     radius: AppSize.s18,
                                     backgroundColor:
-                                    cubit.inCart[model.product.id!]!
+                                    cubit.inCart[model.product.id]!
                                         ? ColorManager.mGreen
                                         : ColorManager.grey.withOpacity(.8),
                                     child: const Icon(

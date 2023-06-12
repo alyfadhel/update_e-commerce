@@ -1,9 +1,9 @@
 import 'package:equatable/equatable.dart';
 
 class Cart extends Equatable {
-  final bool? status;
-  final String? message;
-  final CartData? data;
+  final bool status;
+  final String message;
+  final CartData data;
 
   const Cart({
     required this.status,
@@ -20,9 +20,9 @@ class Cart extends Equatable {
 }
 
 class CartData extends Equatable {
-  final int? id;
-  final int? quantity;
-  final CartProduct? product;
+  final int id;
+  final int quantity;
+  final CartProduct product;
 
   const CartData({
     required this.id,
@@ -39,7 +39,7 @@ class CartData extends Equatable {
 }
 
 class CartProduct extends Equatable {
-  final int? id;
+  final int id;
   final dynamic price;
   final dynamic oldPrice;
   final dynamic discount;

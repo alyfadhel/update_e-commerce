@@ -78,7 +78,7 @@ class ShopCubit extends Cubit<ShopState> {
   CategoriesDetails? categoriesDetails;
   ProductsDetails? productsDetails;
   ChangeFavorites? changeFavorites;
-  Favorites? favorites;
+  List<FavoritesData> favorites = [];
   Search? search;
   Cart? cart;
   GetCart? getCartItem;
@@ -316,7 +316,7 @@ class ShopCubit extends Cubit<ShopState> {
       },
           (r) {
         cart = r;
-        if (!cart!.status!) {
+        if (!cart!.status) {
           inCart[id] = !inCart[id]!;
         } else {
           getCart();

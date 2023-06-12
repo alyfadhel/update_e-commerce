@@ -52,7 +52,7 @@ class CartScreen extends StatelessWidget {
                       Text(
                         AppStrings.emptyCart,
                         style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                          color: ColorManager.grey,
+                         color: ColorManager.grey,
                           fontSize: AppSize.s50
                         ),
                       ),

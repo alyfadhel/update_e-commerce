@@ -11,7 +11,7 @@ class FavoritesRepository extends BaseFavoritesRepository
 
   FavoritesRepository(this.baseFavoritesRemoteDataSource);
   @override
-  Future<Either<Failure, Favorites>> getFavorites() async{
+  Future<Either<Failure, List<FavoritesData>>> getFavorites() async{
     final result = await baseFavoritesRemoteDataSource.getFavorites();
 
     try{

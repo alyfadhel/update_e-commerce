@@ -51,7 +51,11 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (BuildContext context)=> sl<ShopCubit>()..getHomeData()..getCategories()..getFavorites()..changeThemeMode(
+      create: (BuildContext context)=> sl<ShopCubit>()
+        ..getHomeData()
+        ..getCategories()
+        ..getFavorites()
+        ..changeThemeMode(
         fromShared: isDark,
       )..getCart(),
       child: BlocConsumer<ShopCubit,ShopState>(

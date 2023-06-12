@@ -112,7 +112,7 @@ class ShopProductsDetailsErrorState extends ShopState{
 
 class ShopFavoritesLoadingState extends ShopState{}
 class ShopFavoritesSuccessState extends ShopState{
-  final Favorites favorites;
+  final List<FavoritesData> favorites;
 
   ShopFavoritesSuccessState(this.favorites);
 }

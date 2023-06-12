@@ -7,7 +7,7 @@ import 'package:review_shop_app/features/cart/domain/repository/base_cart_reposi
 abstract class BaseCartRemoteDataSource {
   Future<CartModel> getCart(CartParameter parameter);
 
-  Future<GetCartModel> getCartItems();
+  Future<List<CartItemsModel>> getCartItems();
 }
 
 class CartRemoteDataSource extends BaseCartRemoteDataSource {
@@ -29,12 +29,13 @@ class CartRemoteDataSource extends BaseCartRemoteDataSource {
   }
 
   @override
-  Future<GetCartModel> getCartItems() async {
+  Future<List<CartItemsModel>> getCartItems() async {
     final response = await dioHelper.get(
       endPoint: cartEndPoint,
       Authorization: token,
       lang: language,
     );
-    return GetCartModel.fromJson(response);
+    return List<CartItemsModel>.from((response['data']['cart_items'] as List)
+        .map((e) => CartItemsModel.fromJson(e)));
   }
 }

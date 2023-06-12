@@ -35,14 +35,14 @@ class CartScreen extends StatelessWidget {
         return Scaffold(
           appBar: AppBar(),
           body: ConditionalBuilder(
-            condition: cubit.getCartItem != null,
+            condition: cubit.cartItem != null,
             builder: (context) {
-              if (cubit.getCartItem!.data.cartItems.isNotEmpty) {
+              if (cubit.cartItem!.isNotEmpty) {
                 return ListView.builder(
-                  itemBuilder: (context, index) => BuildItemsCart(
-                    model: cubit.getCartItem!.data.cartItems[index],
-                  ),
-                  itemCount: cubit.getCartItem!.data.cartItems.length,
+                  shrinkWrap: true,
+                  itemBuilder: (context, index) =>
+                      BuildItemsCart(model: cubit.cartItem![index]),
+                  itemCount: cubit.cartItem!.length,
                 );
               } else {
                 return Center(
@@ -51,10 +51,11 @@ class CartScreen extends StatelessWidget {
                     children: [
                       Text(
                         AppStrings.emptyCart,
-                        style: Theme.of(context).textTheme.headlineLarge!.copyWith(
-                         color: ColorManager.grey,
-                          fontSize: AppSize.s50
-                        ),
+                        style:
+                            Theme.of(context).textTheme.headlineLarge!.copyWith(
+                                  color: ColorManager.grey,
+                                  fontSize: AppSize.s40,
+                                ),
                       ),
                       const Icon(
                         Icons.menu,

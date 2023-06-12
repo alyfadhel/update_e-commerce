@@ -7,7 +7,7 @@ import 'package:review_shop_app/features/cart/domain/entities/get_cart.dart';
 
 abstract class BaseCartRepository {
   Future<Either<Failure, Cart>> getCart(CartParameter parameter);
-  Future<Either<Failure, GetCart>> getICartItems(NoParameters parameters);
+  Future<Either<Failure, List<CartItems>>> getICartItems(NoParameters parameters);
 }
 
 class CartParameter extends Equatable {

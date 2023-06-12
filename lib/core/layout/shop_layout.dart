@@ -43,7 +43,7 @@ class ShopLayout extends StatelessWidget {
                   children: [
                     Icon(Icons.shopping_cart_outlined,
                         color: ColorManager.grey.withOpacity(.6)),
-                    if (cubit.getCartItem != null)
+                    if (cubit.cartItem != null)
                       Positioned(
                         top: AppSize.s5,
                         left: AppSize.s2,
@@ -51,9 +51,9 @@ class ShopLayout extends StatelessWidget {
                           radius: AppSize.s9,
                           backgroundColor: ColorManager.lightRed,
                           child: Text(
-                            cubit.getCartItem!.data.cartItems.length > 9
+                            cubit.cartItem!.length > 9
                                 ? '+9'
-                                : '${cubit.getCartItem!.data.cartItems.length}',
+                                : '${cubit.cartItem!.length}',
                             style: const TextStyle(
                               color: ColorManager.sWhite,
                               fontSize: AppSize.s11,

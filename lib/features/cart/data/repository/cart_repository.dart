@@ -24,7 +24,7 @@ class CartRepository extends BaseCartRepository
   }
 
   @override
-  Future<Either<Failure, GetCart>> getICartItems(NoParameters parameters)async {
+  Future<Either<Failure, List<CartItems>>> getICartItems(NoParameters parameters)async {
     final result = await baseCartRemoteDataSource.getCartItems();
 
     try{

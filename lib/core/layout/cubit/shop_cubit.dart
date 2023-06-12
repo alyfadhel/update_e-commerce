@@ -81,7 +81,7 @@ class ShopCubit extends Cubit<ShopState> {
   List<FavoritesData> favorites = [];
   Search? search;
   Cart? cart;
-  GetCart? getCartItem;
+  List<CartItems>? cartItem = [];
   var nameController = TextEditingController();
   var emailController = TextEditingController();
   var phoneController = TextEditingController();
@@ -338,7 +338,7 @@ class ShopCubit extends Cubit<ShopState> {
         emit(ShopGetCartErrorState(l.message));
       },
           (r) {
-        getCartItem = r;
+        cartItem = r;
         emit(ShopGetCartSuccessState(r));
       },
     );

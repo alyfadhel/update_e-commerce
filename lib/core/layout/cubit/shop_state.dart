@@ -162,9 +162,9 @@ class ShopCartErrorState extends ShopState{
 
 class ShopGetCartLoadingState extends ShopState{}
 class ShopGetCartSuccessState extends ShopState{
-  final GetCart getCartItem;
+  final List<CartItems> cartItem;
 
-  ShopGetCartSuccessState(this.getCartItem);
+  ShopGetCartSuccessState(this.cartItem);
 }
 class ShopGetCartErrorState extends ShopState{
   final String error;

@@ -52,10 +52,10 @@ class CartScreen extends StatelessWidget {
                       Text(
                         AppStrings.emptyCart,
                         style:
-                            Theme.of(context).textTheme.headlineLarge!.copyWith(
-                                  color: ColorManager.grey,
-                                  fontSize: AppSize.s40,
-                                ),
+                        Theme.of(context).textTheme.headlineLarge!.copyWith(
+                          color: ColorManager.grey,
+                          fontSize: AppSize.s40,
+                        ),
                       ),
                       const Icon(
                         Icons.menu,

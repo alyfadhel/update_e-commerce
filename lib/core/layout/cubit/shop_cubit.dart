@@ -10,6 +10,7 @@ import 'package:review_shop_app/features/cart/domain/entities/get_cart.dart';
 import 'package:review_shop_app/features/cart/domain/repository/base_cart_repository.dart';
 import 'package:review_shop_app/features/cart/domain/usecase/get_cart_items_use_case.dart';
 import 'package:review_shop_app/features/cart/domain/usecase/get_cart_use_case.dart';
+import 'package:review_shop_app/features/cart/presentation/pages/cart_screen.dart';
 import 'package:review_shop_app/features/categories/presentation/pages/categories_screen.dart';
 import 'package:review_shop_app/features/categories_details/domain/entities/categories_details.dart';
 import 'package:review_shop_app/features/categories_details/domain/repository/base_categories_details_repository.dart';
@@ -31,6 +32,7 @@ import 'package:review_shop_app/features/products_details/domain/usecase/get_pro
 import 'package:review_shop_app/features/search/domain/entities/search.dart';
 import 'package:review_shop_app/features/search/domain/repository/base_serach_repository.dart';
 import 'package:review_shop_app/features/search/domain/usecase/get_search_use_case.dart';
+import 'package:review_shop_app/features/search/presentation/pages/search.dart';
 import 'package:review_shop_app/features/user/log_out/domain/entities/logout.dart';
 import 'package:review_shop_app/features/user/log_out/domain/repository/base_logout_repository.dart';
 import 'package:review_shop_app/features/user/log_out/domain/usecase/get_log_out_use_case.dart';
@@ -150,6 +152,7 @@ class ShopCubit extends Cubit<ShopState> {
     const CategoriesScreen(),
     const FavoritesScreen(),
     const SettingsScreen(),
+    const SearchScreen(),
   ];
 
   List<String> title = [

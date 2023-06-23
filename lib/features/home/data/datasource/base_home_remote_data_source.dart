@@ -28,6 +28,8 @@ class HomeRemoteDataSource extends BaseHomeRemoteDataSource {
   Future<CategoriesModel> getCategoriesData() async {
     final response = await dioHelper.get(
       endPoint: categoriesEndPoint,
+      Authorization: token,
+      lang: language,
     );
     return CategoriesModel.fromJson(response);
   }

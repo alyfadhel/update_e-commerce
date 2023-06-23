@@ -20,6 +20,7 @@ class UpdateProfileRemoteDataSource extends BaseUpdateProfileRemoteDataSource {
     final response = await dioHelper.put(
       endPoint: updateProfileEndPoint,
       lang: language,
+      Authorization: token,
       data: {
         'name' : parameter.name,
         'email' : parameter.email,

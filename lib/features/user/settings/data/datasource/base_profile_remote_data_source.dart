@@ -17,6 +17,7 @@ class ProfileRemoteDataSource extends BaseProfileRemoteDataSource {
     final response = await dioHelper.get(
       endPoint: profileEndPoint,
       lang: language,
+      Authorization: token,
     );
     return ProfileModel.fromJson(response);
   }

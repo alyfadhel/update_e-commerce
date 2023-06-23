@@ -10,7 +10,7 @@ class GetHomeUseCase extends BaseUseCase<Home,NoParameters>
 
   GetHomeUseCase(this.baseHomeRepository);
   @override
-  Future<Either<Failure, Home>> call(NoParameters parameters)async {
+  Future<Either<Failure, Home>> call(NoParameters parameter)async {
     return await baseHomeRepository.getHomeData();
   }
 

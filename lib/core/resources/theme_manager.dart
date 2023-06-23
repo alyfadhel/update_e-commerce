@@ -7,6 +7,7 @@ import 'values_manager.dart';
 
 ThemeData getApplicationLightTheme() {
   return ThemeData(
+    useMaterial3: true,
     scaffoldBackgroundColor: ColorManager.sWhite,
     // app bar theme
     appBarTheme: AppBarTheme(
@@ -158,6 +159,7 @@ ThemeData getApplicationLightTheme() {
 
 ThemeData getApplicationDarkTheme() {
   return ThemeData(
+    useMaterial3: true,
     scaffoldBackgroundColor: ColorManager.sBlack,
     // app bar theme
     appBarTheme: AppBarTheme(

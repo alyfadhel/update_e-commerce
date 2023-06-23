@@ -4,11 +4,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_cubit.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_state.dart';
 import 'package:review_shop_app/core/resources/color_manager.dart';
+import 'package:review_shop_app/core/resources/constants_manager.dart';
 import 'package:review_shop_app/core/resources/strings_manager.dart';
 import 'package:review_shop_app/core/resources/values_manager.dart';
+import 'package:review_shop_app/core/service/service_locator.dart';
 import 'package:review_shop_app/core/widgets/my_button.dart';
 import 'package:review_shop_app/core/widgets/my_form_field.dart';
 import 'package:review_shop_app/features/user/settings/domain/entities/profile.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class BuildProfile extends StatelessWidget {
   final Profile profile;
@@ -97,9 +100,7 @@ class BuildProfile extends StatelessWidget {
                   ),
                   MyButton(
                     onPressedTextButton: () {
-                      cubit.getLogOut(
-                        fcmToken: cubit.fcmTokenController.text,
-                      );
+                      Constants().signOut(context);
                     },
                     text: AppStrings.logOut,
                     style: Theme.of(context).textTheme.titleLarge!.copyWith(

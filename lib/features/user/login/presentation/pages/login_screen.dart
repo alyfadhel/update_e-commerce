@@ -31,6 +31,7 @@ class LoginScreen extends StatelessWidget {
                 text: state.login.message!,
                 state: ToastState.success,
               );
+              token = state.login.data!.token!;
               sl<SharedPreferences>()
                   .setString(
                 'token',
@@ -43,7 +44,6 @@ class LoginScreen extends StatelessWidget {
                     builder: (context) => const ShopLayout(),
                   ),
                 );
-                token = state.login.data!.token!;
               });
             } else {
               showToast(

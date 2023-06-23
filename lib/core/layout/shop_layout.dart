@@ -39,28 +39,25 @@ class ShopLayout extends StatelessWidget {
                   );
                 },
                 icon: Stack(
-                  fit: StackFit.expand,
+                  //alignment: AlignmentDirectional.topStart,
+                  //fit: StackFit.passthrough,
                   children: [
                     Icon(Icons.shopping_cart_outlined,
                         color: ColorManager.grey.withOpacity(.6)),
                     if (cubit.cartItem != null)
-                      Positioned(
-                        top: AppSize.s5,
-                        left: AppSize.s2,
-                        child: CircleAvatar(
-                          radius: AppSize.s9,
-                          backgroundColor: ColorManager.lightRed,
-                          child: Text(
-                            cubit.cartItem!.length > 9
-                                ? '+9'
-                                : '${cubit.cartItem!.length}',
-                            style: const TextStyle(
-                              color: ColorManager.sWhite,
-                              fontSize: AppSize.s11,
-                            ),
+                      CircleAvatar(
+                        radius: AppSize.s9,
+                        backgroundColor: ColorManager.lightRed,
+                        child: Text(
+                          cubit.cartItem!.length > 9
+                              ? '+9'
+                              : '${cubit.cartItem!.length}',
+                          style: const TextStyle(
+                            color: ColorManager.sWhite,
+                            fontSize: AppSize.s11,
                           ),
                         ),
-                      ),
+                      )
                   ],
                 ),
               ),

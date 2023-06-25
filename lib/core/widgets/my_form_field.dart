@@ -52,7 +52,7 @@ class MyFormField extends StatelessWidget {
             borderSide: BorderSide(
                 color: ColorManager.grey.withOpacity(.4), width: 3.0)),
         label: Text(isUpperCase ? label.toUpperCase() : label),
-        //prefixIcon: Icon(prefix) ,
+        prefixIcon: Icon(prefix) ,
         suffixIcon: suffix != null
             ? IconButton(onPressed: onPressed, icon: Icon(suffix))
             : null,

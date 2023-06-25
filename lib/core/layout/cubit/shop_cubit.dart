@@ -155,12 +155,12 @@ class ShopCubit extends Cubit<ShopState> {
     const SearchScreen(),
   ];
 
-  // List<String> title = [
-  //   'Home',
-  //   'Categories',
-  //   'Favorites',
-  //   'Settings',
-  // ];
+  List<String> title = [
+    'Home',
+    'Categories',
+    'Favorites',
+    'Settings',
+  ];
 
   void changeBottomNav(int index) {
     currentIndex = index;

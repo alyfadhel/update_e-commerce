@@ -23,9 +23,9 @@ class ShopLayout extends StatelessWidget {
         var cubit = ShopCubit.get(context);
         return Scaffold(
           appBar: AppBar(
-            // title: Text(
-            //   cubit.title[cubit.currentIndex],
-            // ),
+            title: Text(
+              cubit.title[cubit.currentIndex],
+            ),
             actions: [
               IconButton(
                 iconSize: 40.0,
@@ -123,24 +123,7 @@ class ShopLayout extends StatelessWidget {
             onTap: (index) {
               cubit.changeBottomNav(index);
             },
-              items: const [
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.home),
-                  label: 'Home',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.category),
-                  label: 'Categories',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.favorite),
-                  label: 'Favorites',
-                ),
-                BottomNavigationBarItem(
-                  icon: Icon(Icons.person),
-                  label: 'Profile',
-                ),
-              ],
+              items: cubit.items,
           ),
         );
       },

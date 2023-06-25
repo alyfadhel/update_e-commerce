@@ -1,5 +1,3 @@
-
-
 import 'package:review_shop_app/features/cart/domain/entities/cart.dart';
 import 'package:review_shop_app/features/cart/domain/entities/get_cart.dart';
 import 'package:review_shop_app/features/categories_details/domain/entities/categories_details.dart';

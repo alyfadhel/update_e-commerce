@@ -1,6 +1,7 @@
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:review_shop_app/core/layout/cubit/shop_cubit.dart';
 import 'package:review_shop_app/core/layout/shop_layout.dart';
 import 'package:review_shop_app/core/network/end-points.dart';
 import 'package:review_shop_app/core/resources/color_manager.dart';
@@ -14,6 +15,7 @@ import 'package:review_shop_app/core/widgets/toast_state.dart';
 import 'package:review_shop_app/features/user/login/presentation/controller/cubit/login_cubit.dart';
 import 'package:review_shop_app/features/user/login/presentation/controller/cubit/login_state.dart';
 import 'package:review_shop_app/features/user/register/presentation/pages/register_screen.dart';
+import 'package:review_shop_app/main.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginScreen extends StatelessWidget {
@@ -41,7 +43,8 @@ class LoginScreen extends StatelessWidget {
                 Navigator.pushReplacement(
                   context,
                   MaterialPageRoute(
-                    builder: (context) => const ShopLayout(),
+                    builder: (context) => MyApp(
+                        const ShopLayout(), ShopCubit.get(context).isDark),
                   ),
                 );
               });

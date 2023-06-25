@@ -37,15 +37,15 @@ void main() async{
   }
 
   runApp(MyApp(
-    startWidget: widget,
-    isDark: isDark,
+     widget,
+    isDark!,
   ));
 }
 
 class MyApp extends StatelessWidget {
-  final Widget? startWidget;
-  final bool? isDark;
-  const MyApp({super.key,required this.startWidget, required this.isDark});
+   Widget startWidget;
+   bool isDark;
+   MyApp( this.startWidget,  this.isDark,{super.key});
 
   // This widget is the root of your application.
   @override

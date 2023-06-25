@@ -23,9 +23,9 @@ class ShopLayout extends StatelessWidget {
         var cubit = ShopCubit.get(context);
         return Scaffold(
           appBar: AppBar(
-            title: Text(
-              cubit.title[cubit.currentIndex],
-            ),
+            // title: Text(
+            //   cubit.title[cubit.currentIndex],
+            // ),
             actions: [
               IconButton(
                 iconSize: 40.0,
@@ -71,8 +71,8 @@ class ShopLayout extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => MyApp(
-                          startWidget: const ShopLayout(),
-                          isDark: cubit.isDark,
+                          const ShopLayout(),
+                          cubit.isDark,
                         ),
                       ),
                     );
@@ -117,16 +117,31 @@ class ShopLayout extends StatelessWidget {
               ),
             ],
           ),
+          body: cubit.screens[cubit.currentIndex],
           bottomNavigationBar: BottomNavigationBar(
-            elevation: 0.0,
-            type: BottomNavigationBarType.fixed,
             currentIndex: cubit.currentIndex,
             onTap: (index) {
               cubit.changeBottomNav(index);
             },
-            items: cubit.items,
+              items: const [
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.home),
+                  label: 'Home',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.category),
+                  label: 'Categories',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.favorite),
+                  label: 'Favorites',
+                ),
+                BottomNavigationBarItem(
+                  icon: Icon(Icons.person),
+                  label: 'Profile',
+                ),
+              ],
           ),
-          body: cubit.screens[cubit.currentIndex],
         );
       },
     );

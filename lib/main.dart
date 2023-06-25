@@ -21,7 +21,7 @@ void main() async{
   debugPrint(token);
   bool? isDark = sl<SharedPreferences>().getBool('isDark');
   String? lang = sl<SharedPreferences>().getString('language');
-  lang != null? language = lang : language = 'ar';
+  lang != null? language = lang : language = 'en';
   Widget widget;
 
   if(onBoarding != null){

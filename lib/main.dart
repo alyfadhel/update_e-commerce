@@ -11,8 +11,6 @@ import 'package:review_shop_app/features/on_boarding/pages/on_boarding.dart';
 import 'package:review_shop_app/features/user/login/presentation/pages/login_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-
-
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
   Bloc.observer = MyBlocObserver();

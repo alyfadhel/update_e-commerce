@@ -7,6 +7,7 @@ import 'package:review_shop_app/core/resources/color_manager.dart';
 import 'package:review_shop_app/core/resources/values_manager.dart';
 import 'package:review_shop_app/core/service/service_locator.dart';
 import 'package:review_shop_app/features/cart/presentation/pages/cart_screen.dart';
+import 'package:review_shop_app/features/home/presentation/pages/home_screen.dart';
 import 'package:review_shop_app/features/search/presentation/pages/search.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -71,8 +72,8 @@ class ShopLayout extends StatelessWidget {
                       context,
                       MaterialPageRoute(
                         builder: (context) => MyApp(
-                          const ShopLayout(),
-                          cubit.isDark,
+                          startWidget: const ShopLayout(),
+                          isDark: cubit.isDark,
                         ),
                       ),
                     );

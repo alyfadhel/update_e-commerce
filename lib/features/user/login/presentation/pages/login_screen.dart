@@ -44,7 +44,9 @@ class LoginScreen extends StatelessWidget {
                   context,
                   MaterialPageRoute(
                     builder: (context) => MyApp(
-                        const ShopLayout(), ShopCubit.get(context).isDark),
+                      startWidget: const ShopLayout(),
+                      isDark: ShopCubit.get(context).isDark,
+                    ),
                   ),
                 );
               });

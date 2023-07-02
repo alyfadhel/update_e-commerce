@@ -57,9 +57,7 @@ class MyApp extends StatelessWidget {
         fromShared: isDark,
       )..getCart(),
       child: BlocConsumer<ShopCubit,ShopState>(
-        listener: (context, state) {
-
-        },
+        listener: (context, state) {},
         builder: (context, state) {
           return MaterialApp(
             debugShowCheckedModeBanner: false,

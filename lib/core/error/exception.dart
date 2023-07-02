@@ -4,10 +4,10 @@ import 'package:review_shop_app/core/utils/error_message_model.dart';
 class ServerException implements Exception
 {
   final StatusErrorMessageModel statusErrorMessageModel;
-
   ServerException({
     required this.statusErrorMessageModel,
   });
+
 }
 
 

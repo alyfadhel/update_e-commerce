@@ -15,6 +15,9 @@ abstract class ShopState {}
 
 class ShopInitialState extends ShopState{}
 
+class ConnectionInternet extends ShopState{}
+class NoConnectionInternet extends ShopState{}
+
 class ChangeBottomNav extends ShopState{}
 
 class ShopChangeLanguageState extends ShopState{}

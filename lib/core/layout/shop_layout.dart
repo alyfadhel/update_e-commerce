@@ -1,5 +1,10 @@
+import 'dart:async';
+
+import 'package:connectivity_plus/connectivity_plus.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_cubit.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_state.dart';
 import 'package:review_shop_app/core/network/end-points.dart';
@@ -7,15 +12,66 @@ import 'package:review_shop_app/core/resources/color_manager.dart';
 import 'package:review_shop_app/core/resources/values_manager.dart';
 import 'package:review_shop_app/core/service/service_locator.dart';
 import 'package:review_shop_app/features/cart/presentation/pages/cart_screen.dart';
-import 'package:review_shop_app/features/home/presentation/pages/home_screen.dart';
 import 'package:review_shop_app/features/search/presentation/pages/search.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import '../../main.dart';
 
-class ShopLayout extends StatelessWidget {
+
+
+class ShopLayout extends StatefulWidget {
   const ShopLayout({Key? key}) : super(key: key);
 
+
+  @override
+  State<ShopLayout> createState() => _ShopLayoutState();
+}
+late StreamSubscription subscription;
+bool isDeviceConnected = false;
+bool isAlertSet = false;
+
+class _ShopLayoutState extends State<ShopLayout> {
+  @override
+  void initState() {
+    getConnectivity();
+    super.initState();
+  }
+  getConnectivity() =>
+      subscription = Connectivity().onConnectivityChanged.listen(
+            (ConnectivityResult result) async {
+          isDeviceConnected = await InternetConnectionChecker().hasConnection;
+          if (!isDeviceConnected && isAlertSet == false) {
+            showDialogBox();
+            setState(() => isAlertSet = true);
+          }
+        },
+      );
+  showDialogBox() => showCupertinoDialog<String>(
+    context: context,
+    builder: (BuildContext context) => CupertinoAlertDialog(
+      title: const Text('No Connection'),
+      content: const Text('Please check your internet connectivity'),
+      actions: <Widget>[
+        TextButton(
+          onPressed: () async {
+            Navigator.pop(context, 'Cancel');
+            setState(() => isAlertSet = false);
+            isDeviceConnected =
+            await InternetConnectionChecker().hasConnection;
+            if (!isDeviceConnected && isAlertSet == false) {
+              showDialogBox();
+              setState(() => isAlertSet = true);
+            }
+          },
+          child: const Text('OK'),
+        ),
+      ],
+    ),
+  );
+  @override
+  void dispose() {
+    subscription.cancel();
+    super.dispose();
+  }
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ShopCubit, ShopState>(
@@ -124,7 +180,7 @@ class ShopLayout extends StatelessWidget {
             onTap: (index) {
               cubit.changeBottomNav(index);
             },
-              items: cubit.items,
+            items: cubit.items,
           ),
         );
       },

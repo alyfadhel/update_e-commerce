@@ -11,8 +11,8 @@ class GetLoginUserUseCase extends BaseUseCase<Login,LoginParameters>
 
   GetLoginUserUseCase(this.baseLoginUserRepository);
   @override
-  Future<Either<Failure, Login>> call(LoginParameters parameters)async {
-    return await baseLoginUserRepository.getUserLogin(parameters);
+  Future<Either<Failure, Login>> call(LoginParameters parameter)async {
+    return await baseLoginUserRepository.getUserLogin(parameter);
   }
 
 }

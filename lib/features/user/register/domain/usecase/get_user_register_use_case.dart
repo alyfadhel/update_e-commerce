@@ -11,8 +11,8 @@ class GetUserRegisterUseCase extends BaseUseCase<Register,RegisterParameter>
 
   GetUserRegisterUseCase(this.baseRegisterRepository);
   @override
-  Future<Either<Failure, Register>> call(RegisterParameter parameters)async {
-    return await baseRegisterRepository.getUserRegister(parameters);
+  Future<Either<Failure, Register>> call(RegisterParameter parameter)async {
+    return await baseRegisterRepository.getUserRegister(parameter);
   }
 
 }

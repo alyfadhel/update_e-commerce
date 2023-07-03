@@ -29,14 +29,14 @@ class HomeScreen extends StatelessWidget {
         }
 
         if (state is ShopCartSuccessState) {
-          if (state.cart.status!) {
+          if (state.cart.status) {
             showToast(
-              text: state.cart.message!,
+              text: state.cart.message,
               state: ToastState.success,
             );
           } else {
             showToast(
-              text: state.cart.message!,
+              text: state.cart.message,
               state: ToastState.error,
             );
           }

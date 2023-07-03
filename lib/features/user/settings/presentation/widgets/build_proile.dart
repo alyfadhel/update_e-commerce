@@ -7,11 +7,11 @@ import 'package:review_shop_app/core/resources/color_manager.dart';
 import 'package:review_shop_app/core/resources/constants_manager.dart';
 import 'package:review_shop_app/core/resources/strings_manager.dart';
 import 'package:review_shop_app/core/resources/values_manager.dart';
-import 'package:review_shop_app/core/service/service_locator.dart';
 import 'package:review_shop_app/core/widgets/my_button.dart';
 import 'package:review_shop_app/core/widgets/my_form_field.dart';
 import 'package:review_shop_app/features/user/settings/domain/entities/profile.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+
+
 
 class BuildProfile extends StatelessWidget {
   final Profile profile;

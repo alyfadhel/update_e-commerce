@@ -1,5 +1,5 @@
 import 'package:review_shop_app/core/network/dio_helper.dart';
-import 'package:review_shop_app/core/network/end-points.dart';
+import 'package:review_shop_app/core/network/end_points.dart';
 import 'package:review_shop_app/features/user/update_profile/data/model/update_profile_model.dart';
 import 'package:review_shop_app/features/user/update_profile/domain/repository/base_update_profile_use_case.dart';
 

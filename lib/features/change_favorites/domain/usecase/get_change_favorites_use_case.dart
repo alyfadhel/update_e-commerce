@@ -10,8 +10,8 @@ class GetChangeFavoritesUseCase extends BaseUseCase<ChangeFavorites,ChangeFavori
 
   GetChangeFavoritesUseCase(this.baseChangeFavoritesRepository);
   @override
-  Future<Either<Failure, ChangeFavorites>> call(ChangeFavoriteParameter parameters)async {
-    return await baseChangeFavoritesRepository.getChangeFavorites(parameters);
+  Future<Either<Failure, ChangeFavorites>> call(ChangeFavoriteParameter parameter)async {
+    return await baseChangeFavoritesRepository.getChangeFavorites(parameter);
   }
 
 }

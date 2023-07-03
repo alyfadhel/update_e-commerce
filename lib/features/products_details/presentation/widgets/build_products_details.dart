@@ -2,17 +2,15 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:carousel_slider/carousel_controller.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_cubit.dart';
-import 'package:review_shop_app/core/layout/cubit/shop_state.dart';
 import 'package:review_shop_app/core/resources/color_manager.dart';
 import 'package:review_shop_app/core/resources/strings_manager.dart';
 import 'package:review_shop_app/core/resources/values_manager.dart';
 import 'package:review_shop_app/core/widgets/my_button.dart';
-import 'package:review_shop_app/features/cart/domain/entities/cart.dart';
 import 'package:review_shop_app/features/products_details/domain/entities/products_details.dart';
 import 'package:shimmer/shimmer.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
+
 
 var imageController = PageController();
 var carouselController = CarouselController();

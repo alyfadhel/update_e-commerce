@@ -11,8 +11,8 @@ class GetUpdateProfileUseCase extends BaseUseCase<UpdateProfile,UpdateParameter>
 
   GetUpdateProfileUseCase(this.baseUpdateProfileRepository);
   @override
-  Future<Either<Failure, UpdateProfile>> call(UpdateParameter parameters)async {
-    return await baseUpdateProfileRepository.getUpdateProfile(parameters);
+  Future<Either<Failure, UpdateProfile>> call(UpdateParameter parameter)async {
+    return await baseUpdateProfileRepository.getUpdateProfile(parameter);
   }
 
 }

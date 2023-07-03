@@ -10,8 +10,8 @@ class GetProductsDetailsUseCase extends BaseUseCase<ProductsDetails,ProductsPara
 
   GetProductsDetailsUseCase(this.baseProductsDetailsRepository);
   @override
-  Future<Either<Failure, ProductsDetails>> call(ProductsParameter parameters)async {
-    return await baseProductsDetailsRepository.getProductsDetails(parameters);
+  Future<Either<Failure, ProductsDetails>> call(ProductsParameter parameter)async {
+    return await baseProductsDetailsRepository.getProductsDetails(parameter);
   }
 
 }

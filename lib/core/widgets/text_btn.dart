@@ -11,8 +11,8 @@ import 'package:flutter/material.dart';
 class MyTextButton extends StatelessWidget {
   final VoidCallback? onPressed;
   final double? width;
-  final text;
-  final colors;
+  final String text;
+  final Color colors;
 
   const MyTextButton({
     Key? key,
@@ -24,7 +24,7 @@ class MyTextButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
       width: width,
       child: TextButton(
         style: TextButton.styleFrom(

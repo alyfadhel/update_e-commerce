@@ -1,4 +1,3 @@
-
 const String baseApiUrl = 'https://student.valuxapps.com';
 const String version = '/api';
 const String registerEndPoint = '/register';

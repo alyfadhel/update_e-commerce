@@ -1,7 +1,7 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:review_shop_app/core/error/exception.dart';
-import 'package:review_shop_app/core/network/end-points.dart';
+import 'package:review_shop_app/core/network/end_points.dart';
 import 'package:review_shop_app/core/utils/error_message_model.dart';
 
 

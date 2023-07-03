@@ -11,8 +11,8 @@ class GetLogOutUseCase extends BaseUseCase<LogOut,TokenParameter>
 
   GetLogOutUseCase(this.baseLogOutRepository);
   @override
-  Future<Either<Failure, LogOut>> call(TokenParameter parameters)async {
-    return await baseLogOutRepository.getLogOut(parameters);
+  Future<Either<Failure, LogOut>> call(TokenParameter parameter)async {
+    return await baseLogOutRepository.getLogOut(parameter);
   }
 
 }

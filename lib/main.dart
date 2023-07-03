@@ -3,7 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_cubit.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_state.dart';
 import 'package:review_shop_app/core/layout/shop_layout.dart';
-import 'package:review_shop_app/core/network/end-points.dart';
+import 'package:review_shop_app/core/network/end_points.dart';
 import 'package:review_shop_app/core/observer/observer.dart';
 import 'package:review_shop_app/core/resources/theme_manager.dart';
 import 'package:review_shop_app/core/service/service_locator.dart';
@@ -41,10 +41,9 @@ void main() async{
 }
 
 class MyApp extends StatelessWidget {
-   Widget startWidget;
-   bool? isDark;
-   MyApp({super.key,required this.startWidget, required this.isDark});
-
+   final Widget startWidget;
+   final bool? isDark;
+  const MyApp({super.key,required this.startWidget, required this.isDark});
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {

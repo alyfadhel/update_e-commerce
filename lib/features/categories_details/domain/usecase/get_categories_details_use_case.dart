@@ -10,8 +10,8 @@ class GetCategoriesDetailsUseCase extends BaseUseCase<CategoriesDetails,Categori
 
   GetCategoriesDetailsUseCase(this.baseCategoriesDetailsRepository);
   @override
-  Future<Either<Failure, CategoriesDetails>> call(CategoriesParameter parameters)async {
-    return await baseCategoriesDetailsRepository.getCategoriesDetails(parameters);
+  Future<Either<Failure, CategoriesDetails>> call(CategoriesParameter parameter)async {
+    return await baseCategoriesDetailsRepository.getCategoriesDetails(parameter);
   }
 
 }

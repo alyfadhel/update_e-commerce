@@ -7,7 +7,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_cubit.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_state.dart';
-import 'package:review_shop_app/core/network/end-points.dart';
+import 'package:review_shop_app/core/network/end_points.dart';
 import 'package:review_shop_app/core/resources/color_manager.dart';
 import 'package:review_shop_app/core/resources/values_manager.dart';
 import 'package:review_shop_app/core/service/service_locator.dart';
@@ -67,11 +67,11 @@ class _ShopLayoutState extends State<ShopLayout> {
       ],
     ),
   );
-  @override
-  void dispose() {
-    subscription.cancel();
-    super.dispose();
-  }
+  // @override
+  // void dispose() {
+  //   subscription.cancel();
+  //   super.dispose();
+  // }
   @override
   Widget build(BuildContext context) {
     return BlocConsumer<ShopCubit, ShopState>(

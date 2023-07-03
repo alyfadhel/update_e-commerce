@@ -1,5 +1,5 @@
 import 'package:review_shop_app/core/network/dio_helper.dart';
-import 'package:review_shop_app/core/network/end-points.dart';
+import 'package:review_shop_app/core/network/end_points.dart';
 import 'package:review_shop_app/features/user/log_out/data/model/log_out_model.dart';
 import 'package:review_shop_app/features/user/log_out/domain/repository/base_logout_repository.dart';
 

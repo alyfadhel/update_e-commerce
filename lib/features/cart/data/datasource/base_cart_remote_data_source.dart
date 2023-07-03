@@ -1,5 +1,5 @@
 import 'package:review_shop_app/core/network/dio_helper.dart';
-import 'package:review_shop_app/core/network/end-points.dart';
+import 'package:review_shop_app/core/network/end_points.dart';
 import 'package:review_shop_app/features/cart/data/model/cart_model.dart';
 import 'package:review_shop_app/features/cart/data/model/get_cart_model.dart';
 import 'package:review_shop_app/features/cart/domain/repository/base_cart_repository.dart';

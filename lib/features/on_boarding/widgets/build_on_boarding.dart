@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:review_shop_app/core/resources/color_manager.dart';
 import 'package:review_shop_app/core/resources/values_manager.dart';
 import 'package:review_shop_app/features/on_boarding/model/on_boarding_model.dart';
 

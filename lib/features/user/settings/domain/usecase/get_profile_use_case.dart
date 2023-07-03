@@ -11,7 +11,7 @@ class GetProfileUseCase extends BaseUseCase<Profile,NoParameters>
 
   GetProfileUseCase(this.baseProfileRepository);
   @override
-  Future<Either<Failure, Profile>> call(NoParameters parameters)async {
+  Future<Either<Failure, Profile>> call(NoParameters parameter)async {
     return await baseProfileRepository.getProfile();
   }
 

@@ -31,7 +31,7 @@ import 'package:review_shop_app/features/search/data/repository/search_repositor
 import 'package:review_shop_app/features/search/domain/repository/base_serach_repository.dart';
 import 'package:review_shop_app/features/search/domain/usecase/get_search_use_case.dart';
 import 'package:review_shop_app/features/user/log_out/data/datasource/base_log_out_remote_data_source.dart';
-import 'package:review_shop_app/features/user/log_out/data/repository/log-out_repository.dart';
+import 'package:review_shop_app/features/user/log_out/data/repository/log_out_repository.dart';
 import 'package:review_shop_app/features/user/log_out/domain/repository/base_logout_repository.dart';
 import 'package:review_shop_app/features/user/log_out/domain/usecase/get_log_out_use_case.dart';
 import 'package:review_shop_app/features/user/login/data/datasource/base_login_user_remote_data_source.dart';

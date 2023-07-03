@@ -1,14 +1,13 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:conditional_builder_null_safety/conditional_builder_null_safety.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_cubit.dart';
 import 'package:review_shop_app/core/layout/cubit/shop_state.dart';
-import 'package:review_shop_app/core/resources/color_manager.dart';
 import 'package:review_shop_app/core/resources/values_manager.dart';
 import 'package:review_shop_app/core/widgets/my_form_field.dart';
 import 'package:review_shop_app/features/search/presentation/widgets/build_search_items.dart';
-import 'package:shimmer/shimmer.dart';
+
+
 
 class SearchScreen extends StatelessWidget {
   const SearchScreen({super.key});
